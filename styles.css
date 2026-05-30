@@ -1,0 +1,420 @@
+:root {
+  --red: #ce1141;
+  --ink: #171717;
+  --muted: #62666d;
+  --line: #dedede;
+  --paper: #f6f4f0;
+  --white: #ffffff;
+  --gold: #c7a45d;
+  --teal: #0f766e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.topbar {
+  min-height: 84px;
+  padding: 18px clamp(18px, 4vw, 54px);
+  background: var(--ink);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.topbar h1,
+.hero h2,
+.section-title h2,
+.dashboard h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.topbar h1 {
+  font-size: clamp(1.3rem, 3vw, 2.1rem);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--red);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.topbar .eyebrow {
+  color: #ffcedb;
+}
+
+.record {
+  border: 1px solid rgba(255,255,255,.22);
+  padding: 10px 14px;
+  min-width: 112px;
+  text-align: right;
+}
+
+.record span,
+.record strong {
+  display: block;
+}
+
+.record span {
+  color: #d8d8d8;
+  font-size: .8rem;
+}
+
+.record strong {
+  font-size: 1.45rem;
+}
+
+main {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.hero {
+  min-height: 430px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, .8fr);
+  gap: 32px;
+  align-items: end;
+  padding: 44px 0 34px;
+}
+
+.hero-copy h2 {
+  max-width: 830px;
+  font-size: clamp(2.2rem, 6vw, 5.6rem);
+  line-height: .95;
+}
+
+.hero-copy p:last-child {
+  max-width: 720px;
+  color: #3e4146;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.hero-panel,
+.controls,
+.dashboard,
+.table-wrap,
+.memo article {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.metric {
+  padding: 16px;
+  border-left: 5px solid var(--red);
+  background: #fbfbfb;
+}
+
+.metric span,
+.metric small {
+  display: block;
+  color: var(--muted);
+}
+
+.metric strong {
+  display: block;
+  margin: 4px 0;
+  font-size: 2rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.controls,
+.dashboard {
+  padding: 18px;
+}
+
+.toggle-list {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.player-toggle {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  background: #fdfdfc;
+  border-radius: 6px;
+  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.player-toggle strong,
+.player-toggle span {
+  display: block;
+}
+
+.player-toggle span {
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.player-toggle.active {
+  border-color: var(--red);
+  box-shadow: inset 4px 0 0 var(--red);
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--white);
+  background: var(--red);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+button + button {
+  color: var(--ink);
+  background: #e8e5de;
+}
+
+.score-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+#lineupScore {
+  width: 86px;
+  height: 86px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.radar {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr) 42px;
+  gap: 10px;
+  align-items: center;
+}
+
+.bar-row span {
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.bar-track {
+  height: 12px;
+  border-radius: 999px;
+  background: #ece8df;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--red), var(--teal));
+}
+
+.insights {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.insights h3,
+.memo h3 {
+  margin: 0 0 8px;
+}
+
+.insights ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #33363a;
+  line-height: 1.55;
+}
+
+.table-section,
+.memo,
+.stack-section {
+  padding: 34px 0 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+th,
+td {
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+}
+
+th:first-child,
+td:first-child,
+th:nth-child(2),
+td:nth-child(2) {
+  text-align: left;
+}
+
+th {
+  color: var(--muted);
+  font-size: .78rem;
+  text-transform: uppercase;
+}
+
+.role {
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.memo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.memo article,
+.stack-grid article {
+  padding: 18px;
+  line-height: 1.58;
+}
+
+.memo p,
+.stack-grid p {
+  margin: 0;
+  color: #3d4045;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.stack-grid article {
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 8px;
+}
+
+.stack-grid h3 {
+  margin: 0 0 8px;
+}
+
+.stack-grid p {
+  color: #dedede;
+  margin-bottom: 14px;
+}
+
+.stack-grid code {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 8px;
+  padding: 7px 9px;
+  border-radius: 6px;
+  background: rgba(255,255,255,.1);
+  color: #fff0f4;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  width: min(1180px, calc(100% - 32px));
+  margin: 34px auto 24px;
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+@media (max-width: 880px) {
+  .hero,
+  .workspace,
+  .memo-grid,
+  .stack-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  main,
+  footer {
+    width: min(100% - 20px, 1180px);
+  }
+
+  .topbar {
+    padding: 16px 10px;
+  }
+
+  .record {
+    min-width: 92px;
+  }
+
+  .hero-copy h2 {
+    font-size: 2.35rem;
+  }
+
+  .button-row,
+  .score-card {
+    grid-template-columns: 1fr;
+  }
+
+  .score-card {
+    display: grid;
+  }
+}

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Houston Rockets Rotation Lab</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Basketball operations analyst portfolio</p>
+        <h1>Houston Rockets Rotation Lab</h1>
+      </div>
+      <div class="record">
+        <span>2025-26</span>
+        <strong>52-30</strong>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Front office question</p>
+          <h2>How should Houston balance Durant-Sengun creation with Amen's rim pressure and enough shooting?</h2>
+          <p>
+            This tool turns public Rockets stats into a coaching-friendly rotation workspace:
+            identify the cleanest five-man builds, pressure-test role balance, and write the memo
+            a basketball analytics candidate would bring to a staff meeting.
+          </p>
+        </div>
+        <div class="hero-panel">
+          <div class="metric">
+            <span>Net profile</span>
+            <strong>+5.0</strong>
+            <small>118.2 ORtg, 113.2 DRtg</small>
+          </div>
+          <div class="metric">
+            <span>Core age</span>
+            <strong>26.5</strong>
+            <small>Win-now star plus young creators</small>
+          </div>
+          <div class="metric">
+            <span>Shot signal</span>
+            <strong>.350</strong>
+            <small>3PA rate, league rank 22</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="controls" aria-label="Lineup controls">
+          <div class="section-title">
+            <p class="eyebrow">Interactive model</p>
+            <h2>Build A Lineup</h2>
+          </div>
+          <div id="playerToggles" class="toggle-list"></div>
+          <div class="button-row">
+            <button id="bestLineup" type="button">Best Model Five</button>
+            <button id="resetLineup" type="button">Reset</button>
+          </div>
+        </aside>
+
+        <section class="dashboard" aria-live="polite">
+          <div class="score-card">
+            <div>
+              <p class="eyebrow">Lineup grade</p>
+              <h2 id="lineupName">Select five players</h2>
+            </div>
+            <strong id="lineupScore">--</strong>
+          </div>
+
+          <div class="radar" id="radar"></div>
+
+          <div class="insights">
+            <h3>Model Read</h3>
+            <ul id="insightList"></ul>
+          </div>
+        </section>
+      </section>
+
+      <section class="table-section">
+        <div class="section-title">
+          <p class="eyebrow">Rotation board</p>
+          <h2>Player Role Signals</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Player</th>
+                <th>Role</th>
+                <th>MPG</th>
+                <th>PTS</th>
+                <th>AST</th>
+                <th>3P%</th>
+                <th>TS%</th>
+                <th>BPM</th>
+              </tr>
+            </thead>
+            <tbody id="playerRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="memo">
+        <div class="section-title">
+          <p class="eyebrow">Application-ready memo</p>
+          <h2>What I Would Send The Rockets</h2>
+        </div>
+        <div class="memo-grid">
+          <article>
+            <h3>1. Keep two elite advantages on the floor.</h3>
+            <p>
+              Durant and Sengun give Houston two half-court problem solvers. The optimizer
+              rewards lineups where at least one of them is surrounded by three credible
+              spacing or connective pieces, reducing late-clock stagnation.
+            </p>
+          </article>
+          <article>
+            <h3>2. Treat Amen as a pressure multiplier, not a spacer.</h3>
+            <p>
+              Amen's value comes from rim pressure, rebounding, passing, and defense. The
+              best public-data lineups avoid pairing him with too many low-volume shooters,
+              then let him attack tilted floors.
+            </p>
+          </article>
+          <article>
+            <h3>3. Reed Sheppard changes the geometry.</h3>
+            <p>
+              Sheppard's shooting, creation flashes, and positive BPM make him the cleanest
+              public-data answer when the lineup needs more skill without giving back too much
+              defensively.
+            </p>
+          </article>
+          <article>
+            <h3>4. The next data request is possession-level proof.</h3>
+            <p>
+              With internal data, I would validate these recommendations against actual lineup
+              net rating, opponent shot quality, matchup assignments, transition frequency,
+              and play-type outcomes after dead balls.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="stack-section">
+        <div class="section-title">
+          <p class="eyebrow">Full analytics stack</p>
+          <h2>SQL + R Workflow</h2>
+        </div>
+        <div class="stack-grid">
+          <article>
+            <h3>SQL: ask basketball questions from tables</h3>
+            <p>
+              The SQL layer creates a player table, role view, spacing query, and a five-man
+              lineup search using joins. This mirrors how an analyst would pull candidates
+              from a warehouse before modeling.
+            </p>
+            <code>sql/schema.sql</code>
+            <code>sql/analysis_queries.sql</code>
+          </article>
+          <article>
+            <h3>R: rebuild and audit the model</h3>
+            <p>
+              The R script reads the same CSV, scores every rotation lineup, and exports
+              ranked outputs for review. It gives the project a reproducible analysis layer
+              beyond the browser dashboard.
+            </p>
+            <code>Rscript r/lineup_model.R</code>
+            <code>reports/lineup_rankings.csv</code>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Public-data prototype by Katlyn. Data source: Basketball-Reference, pulled May 30, 2026.
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
